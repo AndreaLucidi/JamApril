@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1074522189533946817}
   - component: {fileID: 1074522189533946818}
   - component: {fileID: 3449856055831686669}
+  - component: {fileID: 8951605673846111496}
+  - component: {fileID: 4169920764327115496}
   m_Layer: 0
   m_Name: Tile
   m_TagString: GroundTile
@@ -106,3 +108,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
+--- !u!65 &8951605673846111496
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074522189533946819}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 4, z: 0.5}
+  m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!114 &4169920764327115496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074522189533946819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476f72322acb0fe45b1c97323503c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 0}
+  Interacted: {fileID: 2100000, guid: 2fb8bfeb79667474db8b733a3a72d0c6, type: 2}
