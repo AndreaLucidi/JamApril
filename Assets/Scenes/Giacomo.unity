@@ -159,6 +159,9 @@ MonoBehaviour:
   rows: 20
   cols: 20
   tile: {fileID: 1074522189533946819, guid: a5e3fdbe66569ad4eb2bf78994c89a26, type: 3}
+  obstacle: {fileID: 8197541857633385997, guid: df7744d71e458d848a479524e9a7dbdd,
+    type: 3}
+  obstaclePercentage: 0.2
 --- !u!1 &875049860
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +346,9 @@ MonoBehaviour:
   rows: 20
   cols: 20
   tile: {fileID: 1074522189533946819, guid: a5e3fdbe66569ad4eb2bf78994c89a26, type: 3}
+  obstacle: {fileID: 8197541857633385997, guid: df7744d71e458d848a479524e9a7dbdd,
+    type: 3}
+  obstaclePercentage: 0.3
 --- !u!4 &1986367345
 Transform:
   m_ObjectHideFlags: 0
@@ -356,4 +362,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2096312096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2096312098}
+  - component: {fileID: 2096312097}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2096312097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096312096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d95cc833c41b3f438d9e3255e0fcf28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XofP1: 0
+  YofP1: 0
+  gridLeft: {fileID: 531973834}
+  gridRight: {fileID: 1986367344}
+--- !u!4 &2096312098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096312096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.4862633, y: 3.6711721, z: -6.7650228}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
