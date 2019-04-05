@@ -161,7 +161,6 @@ MonoBehaviour:
   tile: {fileID: 1074522189533946819, guid: a5e3fdbe66569ad4eb2bf78994c89a26, type: 3}
   obstacle: {fileID: 8197541857633385997, guid: df7744d71e458d848a479524e9a7dbdd,
     type: 3}
-  obstaclePercentage: 0.2
 --- !u!1 &875049860
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +347,6 @@ MonoBehaviour:
   tile: {fileID: 1074522189533946819, guid: a5e3fdbe66569ad4eb2bf78994c89a26, type: 3}
   obstacle: {fileID: 8197541857633385997, guid: df7744d71e458d848a479524e9a7dbdd,
     type: 3}
-  obstaclePercentage: 0.3
 --- !u!4 &1986367345
 Transform:
   m_ObjectHideFlags: 0
@@ -374,8 +372,8 @@ GameObject:
   - component: {fileID: 2096312098}
   - component: {fileID: 2096312097}
   m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
+  m_Name: GameController
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -396,6 +394,7 @@ MonoBehaviour:
   YofP1: 0
   gridLeft: {fileID: 531973834}
   gridRight: {fileID: 1986367344}
+  obstaclePercentage: 0.3
 --- !u!4 &2096312098
 Transform:
   m_ObjectHideFlags: 0

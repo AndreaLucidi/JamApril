@@ -13,15 +13,17 @@ public class GridGenerator : MonoBehaviour
     [Header("Objects for tiling")]
     public GameObject tile;
     public GameObject obstacle;
+    public int[,] mapTile;
     //PRIVATE
-    [SerializeField] private float obstaclePercentage = 0.3f;
-    private int[,] instantiator;
     #endregion
 
+    void Awake()
+    {
+        mapTile = new int[rows, cols];
+    }
     // Start is called before the first frame update
     void Start()
     {
-        instantiator = new int[rows, cols];
         CreateGrid();
     }
 
@@ -39,6 +41,8 @@ public class GridGenerator : MonoBehaviour
 
     private void CreateGrid()
     {
+        GameMan objMan = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameMan>();
+        Debug.Log(objMan.XofP1);
         for (int x = 0; x < rows; x++)
         {
             for (int y = 0; y < cols; y++)
@@ -47,28 +51,16 @@ public class GridGenerator : MonoBehaviour
                 GameObject tileObj = Instantiate(tile, pos, Quaternion.identity, transform);
                 tileObj.name = "Tile_" + (x+1).ToString() + "_" + (y+1).ToString();
                 tileObj.GetComponent<Tile>().SetCoordinates(x, y);
-                if (GameMan.instance.IsObstacle(x, y) == 0)
+                if (mapTile[x, y] == 0)
                     Instantiate(obstacle, pos, Quaternion.identity, transform);
             }
         }
     }
 
-    private void GenerateString()
+    public void SetMapTile(int x, int y, int val)
     {
-        float generate = 0.0f;
-
-        for (int x = 0; x < rows; x++)
-        {
-            for (int y = 0; y < cols; y++)
-            {
-                generate = Random.Range(0.0f, 1.0f);
-                if (generate < obstaclePercentage)
-                    instantiator[x, y] = 0;
-                else
-                    instantiator[x, y] = 1;
-                Debug.Log(name + " " + x + " - " + y + " generate " + generate+ " -> "+instantiator[x, y]);
-            }
-        }
+        mapTile[x, y] = val;
+        Debug.Log("ora il valore " + mapTile[x, y]);
     }
 
 }

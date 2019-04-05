@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -227,6 +227,8 @@ MonoBehaviour:
   rows: 20
   cols: 20
   tile: {fileID: 1074522189533946819, guid: a5e3fdbe66569ad4eb2bf78994c89a26, type: 3}
+  obstacle: {fileID: 8197541857633385997, guid: df7744d71e458d848a479524e9a7dbdd,
+    type: 3}
 --- !u!4 &936578453
 Transform:
   m_ObjectHideFlags: 0
@@ -465,6 +467,8 @@ MonoBehaviour:
   rows: 20
   cols: 20
   tile: {fileID: 1074522189533946819, guid: a5e3fdbe66569ad4eb2bf78994c89a26, type: 3}
+  obstacle: {fileID: 8197541857633385997, guid: df7744d71e458d848a479524e9a7dbdd,
+    type: 3}
 --- !u!4 &1278481614
 Transform:
   m_ObjectHideFlags: 0
@@ -524,3 +528,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   XofP1: 0
   YofP1: 0
+  gridLeft: {fileID: 1278481613}
+  gridRight: {fileID: 936578452}
+  obstaclePercentage: 0.3
