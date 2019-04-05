@@ -57,7 +57,6 @@ public class GameMan : MonoBehaviour
 
     public int IsObstacle(int x, int y)
     {
-        Debug.Log("dbfsdkj "+mapTile[0,0]);
         return mapTile[1, 1];
     }
 }

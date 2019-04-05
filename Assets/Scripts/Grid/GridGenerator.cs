@@ -60,7 +60,6 @@ public class GridGenerator : MonoBehaviour
     public void SetMapTile(int x, int y, int val)
     {
         mapTile[x, y] = val;
-        Debug.Log("ora il valore " + mapTile[x, y]);
     }
 
 }

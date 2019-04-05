@@ -394,7 +394,7 @@ MonoBehaviour:
   YofP1: 0
   gridLeft: {fileID: 531973834}
   gridRight: {fileID: 1986367344}
-  obstaclePercentage: 0.3
+  obstaclePercentage: 0.25
 --- !u!4 &2096312098
 Transform:
   m_ObjectHideFlags: 0
