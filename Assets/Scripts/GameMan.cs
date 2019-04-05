@@ -10,25 +10,21 @@ public class GameMan : MonoBehaviour
     public int YofP1;
     public GridGenerator gridLeft;
     public GridGenerator gridRight;
-    public static GameMan instance;
     // PRIVATE
     [SerializeField] private float obstaclePercentage = 0.3f;
-    private int[,] mapTile;
+    public int[,] mapTile;
     #endregion
 
     void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject);
+        mapTile = new int[gridLeft.rows, gridLeft.cols];
+        GenerateObstacle();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        mapTile = new int[gridLeft.rows, gridLeft.cols];
-        GenerateObstacle();
+        
     }
 
     // Update is called once per frame
@@ -40,22 +36,28 @@ public class GameMan : MonoBehaviour
     private void GenerateObstacle()
     {
         float generate = 0.0f;
-
+        
         for (int x = 0; x < gridLeft.rows; x++)
         {
             for (int y = 0; y < gridLeft.cols; y++)
             {
                 generate = Random.Range(0.0f, 1.0f);
                 if (generate < obstaclePercentage)
-                    mapTile[x, y] = 0;
-                else
-                    mapTile[x, y] = 1;
+                {
+                    gridLeft.SetMapTile(x, y, 0);
+                    gridRight.SetMapTile(x, y, 0);
+                } else
+                {
+                    gridLeft.SetMapTile(x, y, 1);
+                    gridRight.SetMapTile(x, y, 1);
+                }
             }
         }
     }
 
     public int IsObstacle(int x, int y)
     {
-        return mapTile[x, y];
+        Debug.Log("dbfsdkj "+mapTile[0,0]);
+        return mapTile[1, 1];
     }
 }
