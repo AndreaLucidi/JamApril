@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 531973834}
   m_Layer: 0
   m_Name: Grid_1
-  m_TagString: Untagged
+  m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &531973834
 MonoBehaviour:
@@ -159,8 +159,8 @@ MonoBehaviour:
   rows: 20
   cols: 20
   tile: {fileID: 1074522189533946819, guid: a5e3fdbe66569ad4eb2bf78994c89a26, type: 3}
-  obstacle: {fileID: 8197541857633385997, guid: df7744d71e458d848a479524e9a7dbdd,
-    type: 3}
+  obstaclePercentage: 0.5
+  obstacleLibrary: {fileID: 11400000, guid: 9d94c19b9d3dfde4b8cf901216d3b5c0, type: 2}
 --- !u!1 &875049860
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,8 +236,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875049860}
-  m_LocalRotation: {x: 0.36930627, y: 0.6037889, z: -0.37085873, w: 0.6012618}
-  m_LocalPosition: {x: -10.786804, y: 39.717846, z: -6.688389}
+  m_LocalRotation: {x: -0.72075653, y: 0.0020793679, z: -0.002162367, w: -0.6931818}
+  m_LocalPosition: {x: -1.9367012, y: 124.727875, z: 8.670118}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -312,55 +312,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1986367343
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1986367345}
-  - component: {fileID: 1986367344}
-  m_Layer: 0
-  m_Name: Grid_2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1986367344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986367343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be0541257dc153e4aa425d867693b242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cellSize: 1
-  rows: 20
-  cols: 20
-  tile: {fileID: 1074522189533946819, guid: a5e3fdbe66569ad4eb2bf78994c89a26, type: 3}
-  obstacle: {fileID: 8197541857633385997, guid: df7744d71e458d848a479524e9a7dbdd,
-    type: 3}
---- !u!4 &1986367345
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986367343}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -24}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2096312096
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,9 +343,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   XofP1: 0
   YofP1: 0
-  gridLeft: {fileID: 531973834}
-  gridRight: {fileID: 1986367344}
-  obstaclePercentage: 0.25
+  startGrid: {fileID: 531973832}
+  gridsNumber: 2
+  offset: -15
 --- !u!4 &2096312098
 Transform:
   m_ObjectHideFlags: 0
@@ -407,5 +358,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

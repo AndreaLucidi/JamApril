@@ -12,19 +12,20 @@ public class GridGenerator : MonoBehaviour
     public int cols;
     [Header("Objects for tiling")]
     public GameObject tile;
-    public GameObject obstacle;
-    public int[,] mapTile;
     //PRIVATE
+    [SerializeField] private float obstaclePercentage = 0.3f;
+    [SerializeField] private ObstacleLibrary obstacleLibrary;
+    private List<Bounds> obstaclesBounds;
     #endregion
 
     void Awake()
     {
-        mapTile = new int[rows, cols];
+        obstaclesBounds = new List<Bounds>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        CreateGrid();
+        
     }
 
     // Update is called once per frame
@@ -39,27 +40,81 @@ public class GridGenerator : MonoBehaviour
         //Gizmos.DrawWireCube();
     }
 
-    private void CreateGrid()
+    public void CreateGrid()
     {
         GameMan objMan = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameMan>();
-        Debug.Log(objMan.XofP1);
+
         for (int x = 0; x < rows; x++)
         {
             for (int y = 0; y < cols; y++)
             {
                 Vector3 pos = transform.position + (new Vector3(x, 0.0f, y) * cellSize);
-                GameObject tileObj = Instantiate(tile, pos, Quaternion.identity, transform);
-                tileObj.name = "Tile_" + (x+1).ToString() + "_" + (y+1).ToString();
-                tileObj.GetComponent<Tile>().SetCoordinates(x, y);
-                if (mapTile[x, y] == 0)
-                    Instantiate(obstacle, pos, Quaternion.identity, transform);
+                if (!GenerateObstacle(pos, x, y))
+                {
+                    GameObject tileObj = Instantiate(tile, pos, Quaternion.identity, transform);
+                    tileObj.name = "Tile_" + (x + 1).ToString() + "_" + (y + 1).ToString();
+                    tileObj.GetComponent<Tile>().SetCoordinates(x, y);
+                }
             }
         }
     }
 
-    public void SetMapTile(int x, int y, int val)
+    public bool GenerateObstacle(Vector3 pos, int xGrid, int yGrid)
     {
-        mapTile[x, y] = val;
+        if (xGrid == 0 || xGrid == rows - 1 || yGrid == 0 || yGrid == cols - 1)
+            return false; // Exit if it is the first or lat row/col
+
+        float generate = Random.Range(0.0f, 1.0f);
+        if (generate < obstaclePercentage)
+        {
+            GameObject newObstacle = Instantiate(obstacleLibrary.GetRandomForm(), pos, RandomRotation());
+
+            Obstacle obstacle = newObstacle.GetComponent<Obstacle>();
+            foreach (Bounds ob in obstaclesBounds)
+            {
+                if (obstacle.IsIntersecting(ob))
+                {
+                    Destroy(newObstacle);
+                    return false;
+                }
+            }
+
+            obstaclesBounds.Add(obstacle.GetBounds());
+            obstacle.SetCoords(xGrid, yGrid);
+            newObstacle.transform.parent = transform;
+            newObstacle.name = "Obstacle_" + (xGrid + 1).ToString() + "_" + (yGrid + 1).ToString();
+            return true;
+        }
+
+        return false;
+    }
+
+    private Quaternion RandomRotation()
+    {
+        int r = Random.Range(1, 5);
+        Vector3 rot = Vector3.zero;
+
+        switch (r)
+        {
+            default:
+            case 1:
+                rot = new Vector3(0.0f, 90.0f, 0.0f);
+                break;
+
+            case 2:
+                rot = new Vector3(0.0f, 180.0f, 0.0f);
+                break;
+
+            case 3:
+                rot = new Vector3(0.0f, 270.0f, 0.0f);
+                break;
+
+            case 4:
+                rot = new Vector3(0.0f, 0.0f, 0.0f);
+                break;
+        }
+
+        return Quaternion.Euler(rot);
     }
 
 }

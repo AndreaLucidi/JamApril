@@ -8,23 +8,23 @@ public class GameMan : MonoBehaviour
     // PUBLIC
     public int XofP1;
     public int YofP1;
-    public GridGenerator gridLeft;
-    public GridGenerator gridRight;
+    public GameObject startGrid;
     // PRIVATE
-    [SerializeField] private float obstaclePercentage = 0.3f;
-    public int[,] mapTile;
+    [Header("Grids to create")]
+    [SerializeField] private int gridsNumber = 2;
+    [SerializeField] private float offset;
     #endregion
 
     void Awake()
     {
-        mapTile = new int[gridLeft.rows, gridLeft.cols];
-        GenerateObstacle();
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        startGrid.GetComponent<GridGenerator>().CreateGrid();
+        DuplicateGrid();
     }
 
     // Update is called once per frame
@@ -33,30 +33,16 @@ public class GameMan : MonoBehaviour
         
     }
 
-    private void GenerateObstacle()
+    private void DuplicateGrid()
     {
-        float generate = 0.0f;
-        
-        for (int x = 0; x < gridLeft.rows; x++)
-        {
-            for (int y = 0; y < gridLeft.cols; y++)
-            {
-                generate = Random.Range(0.0f, 1.0f);
-                if (generate < obstaclePercentage)
-                {
-                    gridLeft.SetMapTile(x, y, 0);
-                    gridRight.SetMapTile(x, y, 0);
-                } else
-                {
-                    gridLeft.SetMapTile(x, y, 1);
-                    gridRight.SetMapTile(x, y, 1);
-                }
-            }
-        }
-    }
+        if (gridsNumber < 2)
+            return;
 
-    public int IsObstacle(int x, int y)
-    {
-        return mapTile[1, 1];
+        for (int i = 2; i <= gridsNumber; i++)
+        {
+            Vector3 pos = new Vector3(offset, 0.0f, 0.0f);
+            GameObject newGrid = Instantiate(startGrid, startGrid.transform.position + (pos * i), Quaternion.identity);
+            newGrid.name = "Grid_" + i.ToString();
+        }
     }
 }
