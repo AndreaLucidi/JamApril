@@ -22,6 +22,7 @@ public class GridGenerator : MonoBehaviour
     {
         obstaclesBounds = new List<Bounds>();
     }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -25,6 +25,7 @@ public class GameMan : MonoBehaviour
     {
         startGrid.GetComponent<GridGenerator>().CreateGrid();
         DuplicateGrid();
+        startGrid.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,7 +43,8 @@ public class GameMan : MonoBehaviour
         {
             Vector3 pos = new Vector3(offset, 0.0f, 0.0f);
             GameObject newGrid = Instantiate(startGrid, startGrid.transform.position + (pos * i), Quaternion.identity);
-            newGrid.name = "Grid_" + i.ToString();
+            newGrid.name = "Grid_" + (i-1).ToString();
+            newGrid.GetComponent<Grid>().CreateGrid();
         }
     }
 }

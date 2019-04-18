@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4259408032906291488}
   - component: {fileID: 453794722512523218}
   - component: {fileID: 874486058933513954}
+  - component: {fileID: 7888804391081564555}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -25,8 +26,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5121839497544645842}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -80, y: 0, z: 2}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5121839497544645842}
-  m_Mesh: {fileID: 4300000, guid: 2049437cfeef7d04db3a6ed68beaa45f, type: 3}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &874486058933513954
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -77,3 +78,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &7888804391081564555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5121839497544645842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc6131d4b9e8d94983b2342c9e150d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  journeyLength: 10
+  target: {x: -80, y: 0, z: 10}
+  pathObj: {fileID: 0}
