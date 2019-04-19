@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f2e1d4145bd29564e9b42d3864eadbdc, type: 2}
+  - {fileID: 2100000, guid: e48be541cc2401e4d8ad6eb39eef60a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,4 +136,4 @@ MonoBehaviour:
   Interacted1: {fileID: 2100000, guid: 58fcfcccb938cd94b89934281bb2e9dd, type: 2}
   Interacted2: {fileID: 2100000, guid: df00f66527d569f4cbd200f2d5e750b1, type: 2}
   Opposite: {fileID: 0}
-  G2: {fileID: 0}
+  OtherG: {fileID: 0}
