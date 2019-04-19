@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyDeathTrigger : MonoBehaviour
 {
-    public bool isP2;
+    public bool isP1;
     // Start is called before the first frame update
     void Start()
     {
-        isP2 = false;
+        isP1 = false;
     }
 
     // Update is called once per frame
@@ -18,9 +18,9 @@ public class EnemyDeathTrigger : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("P2"))
+        if (other.CompareTag("P1"))
         {
-            isP2 = true;
+            isP1 = true;
         }
     }
 }

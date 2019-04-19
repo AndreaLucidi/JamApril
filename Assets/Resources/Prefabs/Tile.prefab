@@ -137,3 +137,5 @@ MonoBehaviour:
   Interacted2: {fileID: 2100000, guid: df00f66527d569f4cbd200f2d5e750b1, type: 2}
   Opposite: {fileID: 0}
   OtherG: {fileID: 0}
+  startMat: {fileID: 0}
+  RepairTime: 1.5
