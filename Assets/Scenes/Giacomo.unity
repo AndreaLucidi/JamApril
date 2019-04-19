@@ -301,6 +301,8 @@ MonoBehaviour:
   XofP1: 0
   YofP1: 0
   startGrid: {fileID: 531973832}
+  p1: {fileID: 6916024730577274798, guid: ba6a8f471d3dedd42a1986dcec05019d, type: 3}
+  p2: {fileID: 7831879916282273458, guid: cd4213354027d0a46892ce91bd33eaaf, type: 3}
   gridsNumber: 3
   offset: -30
 --- !u!4 &2096312098
@@ -384,10 +386,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6434496715966183882, guid: 8e82f4f6d5a24e44fbf9a29244d8941b,
+    - target: {fileID: 6434496715966183883, guid: 8e82f4f6d5a24e44fbf9a29244d8941b,
         type: 3}
-      propertyPath: proximityObstaclePenalty
-      value: 0
+      propertyPath: obstaclePercentage
+      value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6434496715966183883, guid: 8e82f4f6d5a24e44fbf9a29244d8941b,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 5121839497544645842, guid: ea21890489d02fc47971ebf19a00cd22,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e82f4f6d5a24e44fbf9a29244d8941b, type: 3}

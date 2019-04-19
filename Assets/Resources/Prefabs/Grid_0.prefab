@@ -48,7 +48,11 @@ MonoBehaviour:
   cellSize: 1
   rows: 20
   cols: 20
+  unwalkableMask:
+    serializedVersion: 2
+    m_Bits: 512
   tile: {fileID: 1074522189533946819, guid: a5e3fdbe66569ad4eb2bf78994c89a26, type: 3}
+  playerPosition: {x: 0, y: 0, z: 0}
   obstaclePercentage: 0.5
   obstacleLibrary: {fileID: 11400000, guid: 9d94c19b9d3dfde4b8cf901216d3b5c0, type: 2}
 --- !u!114 &6434496715966183882
@@ -72,7 +76,7 @@ MonoBehaviour:
   gridWorldSize: {x: 20, y: 20}
   nodeRadius: 0.5
   walkableRegions: []
-  proximityObstaclePenalty: 1
+  proximityObstaclePenalty: 0
 --- !u!114 &531973833
 MonoBehaviour:
   m_ObjectHideFlags: 0

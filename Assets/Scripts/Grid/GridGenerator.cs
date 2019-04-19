@@ -10,8 +10,12 @@ public class GridGenerator : MonoBehaviour
     public float cellSize = 1.0f;
     public int rows;
     public int cols;
+    public LayerMask unwalkableMask;
     [Header("Objects for tiling")]
     public GameObject tile;
+    [HideInInspector] public Vector3 playerPosition;
+    [Header("Enemy prefab")]
+    public GameObject enemy;
     //PRIVATE
     [SerializeField] private float obstaclePercentage = 0.3f;
     [SerializeField] private ObstacleLibrary obstacleLibrary;
@@ -21,6 +25,7 @@ public class GridGenerator : MonoBehaviour
     void Awake()
     {
         obstaclesBounds = new List<Bounds>();
+        playerPosition = new Vector3(0.0f, 100.0f, 0.0f);
     }
 
     // Start is called before the first frame update
@@ -58,6 +63,8 @@ public class GridGenerator : MonoBehaviour
                 }
             }
         }
+
+        //DestroyTileUnderObstacle();
     }
 
     public bool GenerateObstacle(Vector3 pos, int xGrid, int yGrid)
@@ -88,6 +95,85 @@ public class GridGenerator : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void DestroyTileUnderObstacle()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.name.Contains("Tile"))
+            {
+                Vector3 pos = child.position;
+                pos.y = 50.0f;
+
+                Collider[] ca = Physics.OverlapBox(child.position, Vector3.one * 0.4f, Quaternion.identity, unwalkableMask);
+
+                if (ca.Length > 0)
+                {
+                    foreach (Collider c in ca)
+                    {
+                        Destroy(child.gameObject);
+                    }
+                }
+            }
+        }
+    }
+
+    public void SetAgents(GameObject player)
+    {
+        // Set player
+        int xPlayer = 10;
+        int yPlayer = 10;
+        bool found = false;
+
+        while (!found)
+        {
+            var t = transform.Find("Tile_" + xPlayer.ToString() + "_" + yPlayer.ToString());
+            if (xPlayer % 2 == 0)
+                xPlayer++;
+            else
+                yPlayer++;
+
+            if (t)
+            {
+                Instantiate(player, t.position, Quaternion.identity);
+                found = true;
+            }
+        }
+
+        //Left bottom agent
+        SetAgent(2, 2, 1, 1);
+        // Right bottom
+        SetAgent(19, 2, -1, 1);
+        // Left upper agent
+        SetAgent(2, 19, 1, -1);
+        // Right upper agent
+        SetAgent(19, 19, -1, -1);
+    }
+
+    private void SetAgent(int x, int y, int xSign, int ySign)
+    {
+        bool found = false;
+        int xIndex = x;
+        int yIndex = y;
+        while (!found)
+        {
+            Transform t = transform.Find("Tile_" + xIndex.ToString() + "_" + yIndex.ToString());
+
+            if (x % 2 == 0)
+                xIndex += xSign;
+            else
+                yIndex += ySign;
+
+            if (yIndex > cols || xIndex > rows)
+                break;
+
+            if (t)
+            {
+                Instantiate(enemy, t.position, Quaternion.identity);
+                found = true;
+            }
+        }
     }
 
     private Quaternion RandomRotation()
