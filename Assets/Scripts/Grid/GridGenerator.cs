@@ -13,7 +13,6 @@ public class GridGenerator : MonoBehaviour
     public LayerMask unwalkableMask;
     [Header("Objects for tiling")]
     public GameObject tile;
-    [HideInInspector] public Vector3 playerPosition;
     [Header("Enemy prefab")]
     public GameObject enemy;
     //PRIVATE
@@ -25,7 +24,6 @@ public class GridGenerator : MonoBehaviour
     void Awake()
     {
         obstaclesBounds = new List<Bounds>();
-        playerPosition = new Vector3(0.0f, 100.0f, 0.0f);
     }
 
     // Start is called before the first frame update
@@ -119,7 +117,7 @@ public class GridGenerator : MonoBehaviour
         }
     }
 
-    public void SetAgents(GameObject player)
+    public void SetAgents(GameObject player, bool onlyPlayer)
     {
         // Set player
         int xPlayer = 10;
@@ -136,22 +134,27 @@ public class GridGenerator : MonoBehaviour
 
             if (t)
             {
-                Instantiate(player, t.position, Quaternion.identity);
+                Vector3 destination = t.position;
+                destination.y = 0.5f;
+                Instantiate(player, destination, Quaternion.identity);
                 found = true;
             }
         }
 
-        //Left bottom agent
-        SetAgent(2, 2, 1, 1);
-        // Right bottom
-        SetAgent(19, 2, -1, 1);
-        // Left upper agent
-        SetAgent(2, 19, 1, -1);
-        // Right upper agent
-        SetAgent(19, 19, -1, -1);
+        if (!onlyPlayer)
+        {
+            //Left bottom agent
+            SetAgent(2, 2, 1, 1, player);
+            // Right bottom
+            SetAgent(19, 2, -1, 1, player);
+            // Left upper agent
+            SetAgent(2, 19, 1, -1, player);
+            // Right upper agent
+            SetAgent(19, 19, -1, -1, player);
+        }
     }
 
-    private void SetAgent(int x, int y, int xSign, int ySign)
+    private void SetAgent(int x, int y, int xSign, int ySign, GameObject player)
     {
         bool found = false;
         int xIndex = x;
@@ -170,7 +173,9 @@ public class GridGenerator : MonoBehaviour
 
             if (t)
             {
-                Instantiate(enemy, t.position, Quaternion.identity);
+                GameObject en = Instantiate(enemy, t.position, Quaternion.identity);
+                var enemyObj = en.GetComponent<Enemy>();
+                //enemyObj.playerToFollow = player.transform;
                 found = true;
             }
         }

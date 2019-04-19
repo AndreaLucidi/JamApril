@@ -62,10 +62,11 @@ public class GameMan : MonoBehaviour
         int count = 1;
         foreach (GameObject g in grids)
         {
-            if(count == 1)
-                g.GetComponent<GridGenerator>().SetAgents(p1);
+            PathFinding pf = g.GetComponent<PathFinding>();
+            if (count == 1)
+                g.GetComponent<GridGenerator>().SetAgents(p1, false);
             else
-                g.GetComponent<GridGenerator>().SetAgents(p2);
+                g.GetComponent<GridGenerator>().SetAgents(p2, true);
             count++;
         }
     }

@@ -90,7 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc6131d4b9e8d94983b2342c9e150d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 1
   journeyLength: 10
-  target: {x: -80, y: 0, z: 10}
+  timeToTarget: 5
   pathObj: {fileID: 0}
+  playerToFollow: {fileID: 0}

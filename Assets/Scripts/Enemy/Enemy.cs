@@ -8,8 +8,10 @@ public class Enemy : MonoBehaviour
     // PUBLIC
     public float speed = 10.0f;
     public float journeyLength = 10.0f;
-    public Vector3 target;
+    public float timeToTarget = 5.0f;
+    private Vector3 target;
     public PathFinding pathObj;
+    public GameObject playerToFollow;
     // PRIVATE
     private float startTime;
     private Vector3 prevNode;
@@ -25,16 +27,15 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pathObj = GameObject.Find("Grid_2").GetComponent<PathFinding>();
+        pathObj = GameObject.Find("Grid_1").GetComponent<PathFinding>();
+        playerToFollow = GameObject.FindGameObjectWithTag("P1");
+        StartCoroutine(ChangeTarget());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            PathFind(transform.position, target);
-        }
+        
     }
 
     void FixedUpdate()
@@ -45,7 +46,7 @@ public class Enemy : MonoBehaviour
             if (count > 0)
             {
                 //if (prevNode == Vector3.positiveInfinity)
-                    prevNode = transform.position;
+                prevNode = transform.position;
                 
                 if (PerformMovement(prevNode, pathResult[0]))
                 {
@@ -97,7 +98,6 @@ public class Enemy : MonoBehaviour
         {
             foreach (Vector3 v in myPath)
             {
-                Debug.Log("fa parte della soluzione "+v);
                 pathResult.Add(v);
             }
         }
@@ -106,12 +106,29 @@ public class Enemy : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        /*
         if (pathResult.Count > 0)
         {
             foreach (Vector3 v in pathResult)
             {
                 Gizmos.DrawSphere(v, 0.5f);
             }
+        }
+        */
+    }
+
+    IEnumerator ChangeTarget()
+    {
+        yield return new WaitForSeconds(0.2f);
+        target = playerToFollow.transform.position;
+        PathFind(transform.position, target);
+
+        while (true)
+        {
+            yield return new WaitForSeconds(timeToTarget);
+            target = playerToFollow.transform.position;
+            PathFind(transform.position, target);
+            Debug.Log("Cerco");
         }
     }
 }

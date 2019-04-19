@@ -26,9 +26,7 @@ public class PathFinding : MonoBehaviour {
 		Node startNode = grid.NodeFromWorldPoint(start);
 		Node targetNode = grid.NodeFromWorldPoint(target);
 
-        print("almeno qui "+startNode.worldPosition+" "+targetNode.worldPosition);
 		if (startNode.walkable && targetNode.walkable) {
-            print("qui entro");
 			Heap<Node> openSet = new Heap<Node>(grid.MaxSize);
 			HashSet<Node> closedSet = new HashSet<Node>();
 			openSet.Add(startNode);
