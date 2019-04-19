@@ -9,6 +9,8 @@ TagManager:
   - P2
   - Obstacle
   - Grid
+  - Trigger
+  - Enemy
   layers:
   - Default
   - TransparentFX
